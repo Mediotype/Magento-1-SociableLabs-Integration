@@ -1,0 +1,39 @@
+<?php
+/** @var $this Mediotype_SociableLabs_Block_Head */
+$slHelper = Mage::helper('mediotype_sociablelabs'); /** @var $slHelper Mediotype_SociableLabs_Helper_Data */
+$customer = $this->getCustomer(); /** @var $order Mage_Customer_Model_Customer */
+$order    = $this->getOrder(); /** @var $order Mage_Sales_Model_Order */
+?>
+<?php if($slHelper->getEnabled()): ?>
+    <!-- SL user metadata (All Pages) -->
+    <?php if(isset($customer) && $customer->getId()): ?>
+        <meta property="sl:email" content="<?php echo $customer->getEmail() ?>" />
+        <meta property="sl:first_name" content="<?php echo $customer->getFirstname() ?>" />
+        <meta property="sl:last_name" content="<?php echo $customer->getLastname() ?>" />
+    <?php endif; ?>
+    <meta property="sl:country" content="US" />
+    <meta property="sl:lang" content="en" />
+    <meta property="sl:currency" content="USD" />
+    <?php if(isset($order) && $order->getId()): ?>
+<!-- SL Purchase metadata (Only on post-purchase page) -->
+        <meta property="sl:order_id" content="<?php echo $order->getId() ?>" />
+        <meta property="sl:net_price" content="<?php echo number_format($order->getData('base_subtotal'),2,'','') ?>" /> <!-- The price in cents with discounts applied, but without taxes and shipping (i.e $25.00 is 2500) -->
+        <meta property="sl:gross_price" content="<?php echo number_format($order->getGrandTotal(),2,'','') ?>" /> <!-- The price in cents with discounts, taxes, and shipping applied (i.e $30.00 is 3000) -->
+    <?php endif; ?>
+    <!-- SL script that loads in applications -->
+    <script type="text/javascript">
+        //<![CDATA[
+        (function() {
+        //Check if SL JavaScript API is ready otherwise initialize Queue
+            window.ODY = window.ODY || [];
+
+            var a = document.createElement("script");
+            a.async = true;
+            a.src = "https://d2ibutkotxl0ax.cloudfront.net/prod/sociable-tag.js";
+            a.id = 'sociablejs';
+            a.setAttribute('data-sl-token', '540a1f9e');
+            document.getElementsByTagName("head")[0].appendChild(a);
+        })();
+        //]]>
+    </script>
+<?php endif; ?>

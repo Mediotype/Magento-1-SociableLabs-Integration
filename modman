@@ -1,0 +1,4 @@
+app/code/community/Mediotype/SociableLabs app/code/community/Mediotype/SociableLabs
+app/design/frontend/base/default/layout/mediotype/sociablelabs app/design/frontend/base/default/layout/mediotype/sociablelabs
+app/design/frontend/base/default/template/mediotype/sociablelabs app/design/frontend/base/default/template/mediotype/sociablelabs
+app/etc/modules/Mediotype_SociableLabs.xml app/etc/modules/Mediotype_SociableLabs.xml

@@ -1,0 +1,12 @@
+<?php
+/** @var $this Mediotype_SociableLabs_Block_Registered */
+$helper = Mage::helper('mediotype_sociablelabs'); /** @var $helper Mediotype_SociableLabs_Helper_Data */
+?>
+<?php if($helper->getEnabled() && $this->getRegistrationSuccess()): ?>
+    <!-- SL script that loads in applications -->
+    <script type="text/javascript">
+            window.ODY.push(['openModal', 'PostRegistration', function() {
+                console.log("Callback for SL openModal.");
+            }]);
+    </script>
+<?php endif; ?>

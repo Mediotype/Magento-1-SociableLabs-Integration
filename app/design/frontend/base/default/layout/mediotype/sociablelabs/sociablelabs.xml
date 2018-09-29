@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default translate="label">
+        <reference name="head">
+            <block type="mediotype_sociablelabs/head" name="sociablelabs.js" as="sociablelabs.js" template="mediotype/sociablelabs/head.phtml" after="-"/>
+        </reference>
+        <reference name="after_body_start">
+            <block type="mediotype_sociablelabs/registered" name="sociablelabs.registered.js" as="sociablelabs.registered.js" template="mediotype/sociablelabs/registered.phtml" after="-"/>
+        </reference>
+    </default>
+</layout>
